@@ -41,7 +41,7 @@ public class ManipulaBD
                 String idS = "";
                 idS = (String) reg.get(i);
                 idS = idS.trim();
-                if (idS != " " && idS != "")
+                if (idS != "" && idS != " " && idS != null)
                 {
                     int id = Integer.parseInt(idS);
                     String rfc = ((String) reg.get(i + 1)).trim();
@@ -81,7 +81,7 @@ public class ManipulaBD
                 String idS = "";
                 idS = (String) reg.get(i);
                 idS = idS.trim();
-                if (idS != " " && idS != "")
+                if (idS != "" && idS != " " && idS != null)
                 {
                     int id = Integer.parseInt(idS);
                     String cantidadS = ((String) reg.get(i + 1)).trim();
@@ -119,7 +119,7 @@ public class ManipulaBD
                 String idS = "";
                 idS = (String) reg.get(i);
                 idS = idS.trim();
-                if (idS != " " && idS != "")
+                if (idS != "" && idS != " " && idS != null)
                 {
                     int id = Integer.parseInt(idS);
                     String fecha = ((String) reg.get(i + 1)).trim();
@@ -142,14 +142,14 @@ public class ManipulaBD
             }
         }
     }
-    
+
     public static ArrayList<Detalles> CargarDetalles(ArrayList<Object> reg)
     {
         ArrayList<Detalles> lista = new ArrayList<>();
         try
         {
-            
-            for (int i = 0; i < reg.size(); i+=5)
+
+            for (int i = 0; i < reg.size(); i += 5)
             {
                 String idS = "";
                 idS = (String) reg.get(i);
@@ -160,8 +160,8 @@ public class ManipulaBD
                     String id_ProductosS = ((String) reg.get(i + 1)).trim();
                     int id_Productos = Integer.parseInt(id_ProductosS);
                     String cantidadS = ((String) reg.get(i + 2)).trim();
-                    int cantidad= Integer.parseInt(cantidadS);
-                    String totalS=((String) reg.get(i + 3)).trim();
+                    int cantidad = Integer.parseInt(cantidadS);
+                    String totalS = ((String) reg.get(i + 3)).trim();
                     float total = Float.parseFloat(totalS);
                     String pesoS = ((String) reg.get(i + 4)).trim();
                     float peso = Float.parseFloat(pesoS);
@@ -181,6 +181,41 @@ public class ManipulaBD
             }
         }
     }
+
+    public static ArrayList<Usuarios> CargarUsuarios(ArrayList<Object> reg)
+    {
+        ArrayList<Usuarios> lista = new ArrayList<>();
+        try
+        {
+            for (int i = 0; i < reg.size(); i += 4)
+            {
+                String idS = "";
+                idS = (String) reg.get(i);
+                idS = idS.trim();
+                if (idS != "" && idS != " " && idS != null)
+                {
+                    int id = Integer.parseInt(idS);
+                    String nomUsuario = ((String) reg.get(i + 1)).trim();
+                    String contrasenia = ((String) reg.get(i + 2)).trim();
+                    String puesto = ((String) reg.get(i + 3)).trim();
+                    Usuarios obj = new Usuarios(id, nomUsuario, contrasenia, puesto);
+                    lista.add(obj);
+                }
+            }
+            return lista;
+        } catch (Exception e)
+        {
+            if (!lista.isEmpty())
+            {
+                return lista;
+            } else
+            {
+                return null;
+            }
+        }
+    }
+    
+    
 
     /**
      * Método para insertar dato en la base en la tabla proveedores
