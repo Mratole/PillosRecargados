@@ -13,11 +13,11 @@ public class Productos {
     
     private int id;
     private int cantidad;
-    private double precio;
-    private double peso;
+    private float precio;
+    private float peso;
     private int tipoProducto;
     
-    public Productos(int id, int cantidad, double precio, double peso, int tipoProducto) {
+    public Productos(int id, int cantidad, float precio, float peso, int tipoProducto) {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -53,11 +53,11 @@ public class Productos {
         this.cantidad = cantidad;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
 
