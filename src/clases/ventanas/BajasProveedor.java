@@ -27,40 +27,40 @@ public class BajasProveedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        empresa = new javax.swing.JTextField();
-        status = new javax.swing.JSpinner();
-        direccion = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        contacto_i = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        telContacto_i = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        estatus_i = new javax.swing.JSpinner();
+        empresa_i = new javax.swing.JTextField();
         cancelar = new javax.swing.JButton();
-        Id = new javax.swing.JTextField();
-        sector = new javax.swing.JTextField();
+        direccion_i = new javax.swing.JTextField();
         aceptar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        tel_e = new javax.swing.JTextField();
+        sector_i = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        id_i = new javax.swing.JTextField();
+        telEmpresa_i = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        rfc = new javax.swing.JTextField();
+        rfc_i = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        contacto = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        tel_c = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel3.setText("Empresa:");
+
+        jLabel4.setText("Direccion:");
+
+        jLabel5.setText("Sector:");
 
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
-            }
-        });
-
-        Id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdActionPerformed(evt);
             }
         });
 
@@ -71,23 +71,29 @@ public class BajasProveedor extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Id:");
+        jLabel10.setText("Bajas");
 
         jLabel6.setText("Teléfono (Empresa):");
 
-        tel_e.addActionListener(new java.awt.event.ActionListener() {
+        id_i.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tel_eActionPerformed(evt);
+                id_iActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("Bajas");
+        telEmpresa_i.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telEmpresa_iActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Id:");
 
         jLabel7.setText("Contacto");
 
-        rfc.addActionListener(new java.awt.event.ActionListener() {
+        rfc_i.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rfcActionPerformed(evt);
+                rfc_iActionPerformed(evt);
             }
         });
 
@@ -95,13 +101,7 @@ public class BajasProveedor extends javax.swing.JFrame {
 
         jLabel2.setText("RFC:");
 
-        jLabel9.setText("Status:");
-
-        jLabel3.setText("Empresa:");
-
-        jLabel4.setText("Direccion:");
-
-        jLabel5.setText("Sector:");
+        jLabel9.setText("Estatus:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,18 +126,18 @@ public class BajasProveedor extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(estatus_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(aceptar)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(Id)
-                                            .addComponent(rfc)
-                                            .addComponent(empresa)
-                                            .addComponent(direccion)
-                                            .addComponent(sector)
-                                            .addComponent(tel_e, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                                            .addComponent(contacto)
-                                            .addComponent(tel_c)))))))
+                                            .addComponent(id_i)
+                                            .addComponent(rfc_i)
+                                            .addComponent(empresa_i)
+                                            .addComponent(direccion_i)
+                                            .addComponent(sector_i)
+                                            .addComponent(telEmpresa_i, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                            .addComponent(contacto_i)
+                                            .addComponent(telContacto_i)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(jLabel10)))
@@ -151,42 +151,39 @@ public class BajasProveedor extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(rfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel2)))
+                    .addComponent(rfc_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(empresa_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(direccion_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(sector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sector_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tel_e, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telEmpresa_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(contacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contacto_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(tel_c, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telContacto_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(estatus_i, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
@@ -201,21 +198,21 @@ public class BajasProveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
 
-    private void IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IdActionPerformed
-
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aceptarActionPerformed
 
-    private void tel_eActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tel_eActionPerformed
+    private void id_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_iActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tel_eActionPerformed
+    }//GEN-LAST:event_id_iActionPerformed
 
-    private void rfcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcActionPerformed
+    private void telEmpresa_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telEmpresa_iActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rfcActionPerformed
+    }//GEN-LAST:event_telEmpresa_iActionPerformed
+
+    private void rfc_iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfc_iActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rfc_iActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,12 +250,13 @@ public class BajasProveedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Id;
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
-    private javax.swing.JTextField contacto;
-    private javax.swing.JTextField direccion;
-    private javax.swing.JTextField empresa;
+    private javax.swing.JTextField contacto_i;
+    private javax.swing.JTextField direccion_i;
+    private javax.swing.JTextField empresa_i;
+    private javax.swing.JSpinner estatus_i;
+    private javax.swing.JTextField id_i;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -269,10 +267,9 @@ public class BajasProveedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField rfc;
-    private javax.swing.JTextField sector;
-    private javax.swing.JSpinner status;
-    private javax.swing.JTextField tel_c;
-    private javax.swing.JTextField tel_e;
+    private javax.swing.JTextField rfc_i;
+    private javax.swing.JTextField sector_i;
+    private javax.swing.JTextField telContacto_i;
+    private javax.swing.JTextField telEmpresa_i;
     // End of variables declaration//GEN-END:variables
 }
