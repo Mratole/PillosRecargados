@@ -173,5 +173,20 @@ public class ManipulaBD
             }
         }
     }
+    
+    public static ArrayList<Productos> CargarProductos(ArrayList <Object> reg)
+    {
+        ArrayList<Productos> lista = new ArrayList<>();
+        for (int i = 0; i < reg.size(); i += 5)
+            {
+            String idS = "";
+            idS = (String) reg.get(i);
+            idS = idS.trim();
+             if (idS != " " && idS != "") 
+            {
+            
+            }
+    }
+ 
 }
 
