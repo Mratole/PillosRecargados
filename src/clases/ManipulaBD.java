@@ -71,6 +71,80 @@ public class ManipulaBD
         }
     }
 
+    public static ArrayList<Productos> CargarProductos(ArrayList<Object> reg)
+    {
+        ArrayList<Productos> lista = new ArrayList<>();
+        try
+        {
+            for (int i = 0; i < reg.size(); i += 5)
+            {
+                String idS = "";
+                idS = (String) reg.get(i);
+                idS = idS.trim();
+                if (idS != " " && idS != "")
+                {
+                    int id = Integer.parseInt(idS);
+                    String cantidadS = ((String) reg.get(i + 1)).trim();
+                    int cantidad = Integer.parseInt(cantidadS);
+                    String precioS = ((String) reg.get(i + 2)).trim();
+                    double precio = Double.parseDouble(precioS);
+                    String pesoS = ((String) reg.get(i + 3)).trim();
+                    double peso = Double.parseDouble(pesoS);
+                    String tipoProductoS = ((String) reg.get(i + 4)).trim();
+                    int tipoProducto = Integer.parseInt(tipoProductoS);
+                    Productos obj = new Productos(id, cantidad, precio, peso, tipoProducto);
+                    lista.add(obj);
+                }
+            }
+            return lista;
+        } catch (Exception e)
+        {
+            if (!lista.isEmpty())
+            {
+                return lista;
+            } else
+            {
+                return null;
+            }
+        }
+    }
+
+    public static ArrayList<Compras> CargarCompras(ArrayList<Object> reg)
+    {
+        ArrayList<Compras> lista = new ArrayList<>();
+        try
+        {
+            for (int i = 0; i < reg.size(); i += 4)
+            {
+                String idS = "";
+                idS = (String) reg.get(i);
+                idS = idS.trim();
+                if (idS != " " && idS != "")
+                {
+                    int id = Integer.parseInt(idS);
+                    String fecha = ((String) reg.get(i + 1)).trim();
+                    String hora = ((String) reg.get(i + 2)).trim();
+                    String es = ((String) reg.get(i + 3)).trim();
+                    boolean estatus = Boolean.parseBoolean(es);
+                    Compras obj = new Compras(id, fecha, hora, estatus);
+                    lista.add(obj);
+                }
+            }
+            return lista;
+        } catch (Exception e)
+        {
+            if (!lista.isEmpty())
+            {
+                return lista;
+            } else
+            {
+                return null;
+            }
+        }
+    }
+    
+    
+
     /**
      * Método para insertar dato en la base en la tabla proveedores
      *
@@ -153,7 +227,7 @@ public class ManipulaBD
     }
 
     /**
-     * 
+     *
      * @param id
      * @param campos rfc,id
      * @param datos "'9y4fh48yw',5"
@@ -173,20 +247,5 @@ public class ManipulaBD
             }
         }
     }
-    
-    public static ArrayList<Productos> CargarProductos(ArrayList <Object> reg)
-    {
-        ArrayList<Productos> lista = new ArrayList<>();
-        for (int i = 0; i < reg.size(); i += 5)
-            {
-            String idS = "";
-            idS = (String) reg.get(i);
-            idS = idS.trim();
-             if (idS != " " && idS != "") 
-            {
-            
-            }
-    }
- 
-}
 
+}

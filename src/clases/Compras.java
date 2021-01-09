@@ -1,20 +1,18 @@
-
 package clases;
 
 /**
  *
  * @author juan
  */
-public class Compras 
+public class Compras
 {
-    
+
     private int id;
     private String fecha;
     private String hora;
     private boolean total;
-     
 
- public Compras()
+    public Compras()
     {
 
     }
@@ -29,62 +27,72 @@ public class Compras
     public Compras(int id, String fecha, String hora, boolean total)
     {
         this.id = id;
-        this. fecha = fecha;
-        this. hora = hora;
+        this.fecha = fecha;
+        this.hora = hora;
         this.total = total;
-}
+    }
 
     /**
-  * 
-     * @param id
-  */
- public void setid(int id)
- {
-     this.id = id;
- }
- /**
-  * @return the id
-  */
- public String getfecha()
- {
-     return fecha;
- }
- /**
-     * @param fecha
-  * 
-  */
- public void setfecha(String fecha)
- {
-     this.fecha = fecha;
- }
- /**
-  * @return the hohra 
-  */
- public String gethora()
- {
-     return hora;
- }
- /**
-  * @param hora  the id hora  set
-  */
- public void sethora(String hora)
- {
-     this.hora = hora ;
- }
- /**
-  * @return the total
-  */
- public boolean istotal()
- {
-     return total;
- }
+     * @return the id
+     */
+    public int getId()
+    {
+        return id;
+    }
 
- /**
-     * @param total
-  */
- public void settotal(boolean total)
- {
-     this.total = total;
- }
- 
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * @return the fecha
+     */
+    public String getFecha()
+    {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(String fecha)
+    {
+        this.fecha = fecha;
+    }
+
+    /**
+     * @return the hora
+     */
+    public String getHora()
+    {
+        return hora;
+    }
+
+    /**
+     * @param hora the hora to set
+     */
+    public void setHora(String hora)
+    {
+        this.hora = hora;
+    }
+
+    /**
+     * @return the total
+     */
+    public boolean isTotal()
+    {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(boolean total)
+    {
+        this.total = total;
+    }
 }
