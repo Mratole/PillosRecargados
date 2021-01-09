@@ -214,8 +214,46 @@ public class ManipulaBD
             }
         }
     }
-    
-    
+
+    public static ArrayList<Reportes> CargarReportes(ArrayList<Object> reg)
+    {
+        ArrayList<Reportes> lista = new ArrayList<>();
+        try
+        {
+            for (int i = 0; i < reg.size(); i += 6)
+            {
+                String idS = "";
+                idS = (String) reg.get(i);
+                idS = idS.trim();
+                if (idS != "" && idS != " " && idS != null)
+                {
+                    int id = Integer.parseInt(idS);
+                    String id_ProS = ((String) reg.get(i + 1)).trim();
+                    int id_Productos = Integer.parseInt(id_ProS);
+                    String cantidad_ActualS = ((String) reg.get(i + 2)).trim();
+                    int cantidad_Actual = Integer.parseInt(cantidad_ActualS);
+                    String cantidad_MinimaS = ((String) reg.get(i + 3)).trim();
+                    int cantidad_Minima = Integer.parseInt(cantidad_MinimaS);
+                    String cantidad_MaximaS = ((String) reg.get(i + 4)).trim();
+                    int cantidad_Maxima = Integer.parseInt(cantidad_MaximaS);
+                    String es = ((String) reg.get(i + 5)).trim();
+                    boolean estatus = Boolean.parseBoolean(es);
+                    Reportes obj = new Reportes(id, id_Productos, cantidad_Actual, cantidad_Minima, cantidad_Maxima, estatus);
+                    lista.add(obj);
+                }
+            }
+            return lista;
+        } catch (Exception e)
+        {
+            if (!lista.isEmpty())
+            {
+                return lista;
+            } else
+            {
+                return null;
+            }
+        }
+    }
 
     /**
      * Método para insertar dato en la base en la tabla proveedores
