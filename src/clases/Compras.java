@@ -10,7 +10,7 @@ public class Compras
     private int id;
     private String fecha;
     private String hora;
-    private boolean total;
+    private float total;
 
     public Compras()
     {
@@ -24,7 +24,7 @@ public class Compras
      * @param hora
      * @param total
      */
-    public Compras(int id, String fecha, String hora, boolean total)
+    public Compras(int id, String fecha, String hora, float total)
     {
         this.id = id;
         this.fecha = fecha;
@@ -83,7 +83,7 @@ public class Compras
     /**
      * @return the total
      */
-    public boolean isTotal()
+    public float     isTotal()
     {
         return total;
     }
@@ -91,7 +91,7 @@ public class Compras
     /**
      * @param total the total to set
      */
-    public void setTotal(boolean total)
+    public void setTotal(float total)
     {
         this.total = total;
     }

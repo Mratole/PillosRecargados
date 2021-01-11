@@ -124,9 +124,9 @@ public class ManipulaBD
                     int id = Integer.parseInt(idS);
                     String fecha = ((String) reg.get(i + 1)).trim();
                     String hora = ((String) reg.get(i + 2)).trim();
-                    String es = ((String) reg.get(i + 3)).trim();
-                    boolean estatus = Boolean.parseBoolean(es);
-                    Compras obj = new Compras(id, fecha, hora, estatus);
+                    String totalS = ((String) reg.get(i + 3)).trim();
+                    float total = Float.parseFloat(totalS);
+                    Compras obj = new Compras(id, fecha, hora, total);
                     lista.add(obj);
                 }
             }
@@ -286,6 +286,98 @@ public class ManipulaBD
                     + contacto + "','"
                     + telContacto + "','"
                     + estatusS + "'"
+            );
+            ManipulaBD.desconecta(con);
+            System.out.println("Dato insertado");
+        }
+    }
+    
+    public static void AltasProductos (int id,int cantidad,double precio,double peso,int tipoProducto)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Insertar(con, "productos",
+                    "" + id + ","
+                    + cantidad + ","
+                    + precio + ","
+                    + peso + ","
+                    + tipoProducto + ""
+            );
+            ManipulaBD.desconecta(con);
+            System.out.println("Dato insertado");
+        }
+         
+    }
+    
+    public static void AltasCompras(int id, String fecha,String hora, float total)
+    {
+       Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Insertar(con, "compras" ,
+                    "" + id + ","
+                    + fecha + "','"
+                    + hora + "',"
+                    + total + ""
+            );
+            ManipulaBD.desconecta(con);
+            System.out.println("Dato insertado");
+        }
+    }
+    
+    public static void  AltasDetalles(int id, int id_Productos, int cantidad, float total, float peso)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Insertar(con, "detalles" ,
+                    "" + id + ","
+                    + id_Productos + ","
+                    + cantidad + ","
+                    + total + ","
+                    + peso + ""
+            );  
+            ManipulaBD.desconecta(con);
+            System.out.println("Dato insertado");
+        }
+    }
+    
+    public static void AltasUsuarios (int id,String nomUsuario, String contrasenia, String puesto)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Insertar(con, "usuarios" , 
+                    "" + id + ",'"
+                    + nomUsuario + "','"
+                    + contrasenia + "','"
+                    + puesto + "'"
+            );
+            ManipulaBD.desconecta(con);
+            System.out.println("Dato insertado");
+        }
+    }
+    
+    public static void AltasReportes (int id, int id_Productos, int cantidad_Actual, int cantidad_Minima, int cantidad_Maxima, boolean estatus)
+    {
+        String estatusS = String.valueOf(estatus);
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Insertar(con, "reportes" , 
+                    "" + id + ","
+                    + id_Productos + ","
+                    + cantidad_Actual + ","
+                    + cantidad_Minima + ","
+                    + cantidad_Maxima + ",'"
+                    + estatus + "'"
+                    
             );
             ManipulaBD.desconecta(con);
             System.out.println("Dato insertado");
