@@ -4,15 +4,17 @@ package clases;
  *
  * @author roodi
  */
-public class Productos {
-    
+public class Productos
+{
+
     private int id;
     private int cantidad;
     private double precio;
     private double peso;
     private int tipoProducto;
-    
-    public Productos(int id, int cantidad, double precio, double peso, int tipoProducto) {
+
+    public Productos(int id, int cantidad, double precio, double peso, int tipoProducto)
+    {
         this.id = id;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -20,44 +22,54 @@ public class Productos {
         this.tipoProducto = tipoProducto;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public int getCantidad() {
+    public int getCantidad()
+    {
         return cantidad;
     }
 
-    public double getPrecio() {
+    public double getPrecio()
+    {
         return precio;
     }
 
-    public double getPeso() {
+    public double getPeso()
+    {
         return peso;
     }
 
-    public int getTipoProducto() {
+    public int getTipoProducto()
+    {
         return tipoProducto;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(int cantidad)
+    {
         this.cantidad = cantidad;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(double precio)
+    {
         this.precio = precio;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(double peso)
+    {
         this.peso = peso;
     }
 
-    public void setTipoProducto(int tipoProducto) {
+    public void setTipoProducto(int tipoProducto)
+    {
         this.tipoProducto = tipoProducto;
     }
-    
+
 }

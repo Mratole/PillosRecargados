@@ -291,8 +291,8 @@ public class ManipulaBD
             System.out.println("Dato insertado");
         }
     }
-    
-    public static void AltasProductos (int id,int cantidad,double precio,double peso,int tipoProducto)
+
+    public static void AltasProductos(int id, int cantidad, double precio, double peso, int tipoProducto)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
@@ -308,16 +308,16 @@ public class ManipulaBD
             ManipulaBD.desconecta(con);
             System.out.println("Dato insertado");
         }
-         
+
     }
-    
-    public static void AltasCompras(int id, String fecha,String hora, float total)
+
+    public static void AltasCompras(int id, String fecha, String hora, float total)
     {
-       Connection con = ManipulaBD.conecta();
+        Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
-            sql.Insertar(con, "compras" ,
+            sql.Insertar(con, "compras",
                     "" + id + ","
                     + fecha + "','"
                     + hora + "',"
@@ -327,32 +327,32 @@ public class ManipulaBD
             System.out.println("Dato insertado");
         }
     }
-    
-    public static void  AltasDetalles(int id, int id_Productos, int cantidad, float total, float peso)
+
+    public static void AltasDetalles(int id, int id_Productos, int cantidad, float total, float peso)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
-            sql.Insertar(con, "detalles" ,
+            sql.Insertar(con, "detalles",
                     "" + id + ","
                     + id_Productos + ","
                     + cantidad + ","
                     + total + ","
                     + peso + ""
-            );  
+            );
             ManipulaBD.desconecta(con);
             System.out.println("Dato insertado");
         }
     }
-    
-    public static void AltasUsuarios (int id,String nomUsuario, String contrasenia, String puesto)
+
+    public static void AltasUsuarios(int id, String nomUsuario, String contrasenia, String puesto)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
-            sql.Insertar(con, "usuarios" , 
+            sql.Insertar(con, "usuarios",
                     "" + id + ",'"
                     + nomUsuario + "','"
                     + contrasenia + "','"
@@ -362,22 +362,21 @@ public class ManipulaBD
             System.out.println("Dato insertado");
         }
     }
-    
-    public static void AltasReportes (int id, int id_Productos, int cantidad_Actual, int cantidad_Minima, int cantidad_Maxima, boolean estatus)
+
+    public static void AltasReportes(int id, int id_Productos, int cantidad_Actual, int cantidad_Minima, int cantidad_Maxima, boolean estatus)
     {
         String estatusS = String.valueOf(estatus);
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
-            sql.Insertar(con, "reportes" , 
+            sql.Insertar(con, "reportes",
                     "" + id + ","
                     + id_Productos + ","
                     + cantidad_Actual + ","
                     + cantidad_Minima + ","
                     + cantidad_Maxima + ",'"
-                    + estatus + "'"
-                    
+                    + estatusS + "'"
             );
             ManipulaBD.desconecta(con);
             System.out.println("Dato insertado");
@@ -399,7 +398,7 @@ public class ManipulaBD
         }
         ManipulaBD.desconecta(con);
     }
-    
+
     public static void BajasProductos(int id)
     {
         Connection con = ManipulaBD.conecta();
@@ -410,7 +409,7 @@ public class ManipulaBD
         }
         ManipulaBD.desconecta(con);
     }
-    
+
     public static void BajasCompras(int id)
     {
         Connection con = ManipulaBD.conecta();
@@ -421,7 +420,7 @@ public class ManipulaBD
         }
         ManipulaBD.desconecta(con);
     }
-            
+
     public static void BajasDetalles(int id)
     {
         Connection con = ManipulaBD.conecta();
@@ -432,7 +431,7 @@ public class ManipulaBD
         }
         ManipulaBD.desconecta(con);
     }
-    
+
     public static void BajasUsuarios(int id)
     {
         Connection con = ManipulaBD.conecta();
@@ -443,6 +442,7 @@ public class ManipulaBD
         }
         ManipulaBD.desconecta(con);
     }
+
     public static void BajasReportes(int id)
     {
         Connection con = ManipulaBD.conecta();
@@ -481,7 +481,7 @@ public class ManipulaBD
         ManipulaBD.desconecta(con);
         return ap;
     }
-    
+
     public static ArrayList<Productos> ConsultaProductos(String variable, String condicion)
     {
         Connection con = ManipulaBD.conecta();
@@ -501,7 +501,7 @@ public class ManipulaBD
         ManipulaBD.desconecta(con);
         return ap;
     }
-    
+
     public static ArrayList<Compras> ConsultaCompras(String variable, String condicion)
     {
         Connection con = ManipulaBD.conecta();
@@ -521,7 +521,7 @@ public class ManipulaBD
         ManipulaBD.desconecta(con);
         return ap;
     }
-    
+
     public static ArrayList<Detalles> ConsultaDetalles(String variable, String condicion)
     {
         Connection con = ManipulaBD.conecta();
@@ -541,7 +541,7 @@ public class ManipulaBD
         ManipulaBD.desconecta(con);
         return ap;
     }
-    
+
     public static ArrayList<Usuarios> ConsultaUsuarios(String variable, String condicion)
     {
         Connection con = ManipulaBD.conecta();
@@ -561,7 +561,7 @@ public class ManipulaBD
         ManipulaBD.desconecta(con);
         return ap;
     }
-    
+
     public static ArrayList<Reportes> ConsultaReportes(String variable, String condicion)
     {
         Connection con = ManipulaBD.conecta();
@@ -603,7 +603,7 @@ public class ManipulaBD
             }
         }
     }
-    
+
     public static void ModificarProductos(int id, String campos, String datos)
     {
         Connection con = ManipulaBD.conecta();
@@ -619,7 +619,7 @@ public class ManipulaBD
             }
         }
     }
-    
+
     public static void ModificarCompras(int id, String campos, String datos)
     {
         Connection con = ManipulaBD.conecta();
@@ -635,7 +635,7 @@ public class ManipulaBD
             }
         }
     }
-    
+
     public static void ModificarDetalles(int id, String campos, String datos)
     {
         Connection con = ManipulaBD.conecta();
@@ -651,7 +651,7 @@ public class ManipulaBD
             }
         }
     }
-    
+
     public static void ModificarUsuarios(int id, String campos, String datos)
     {
         Connection con = ManipulaBD.conecta();
@@ -667,7 +667,7 @@ public class ManipulaBD
             }
         }
     }
-    
+
     public static void ModificarReportes(int id, String campos, String datos)
     {
         Connection con = ManipulaBD.conecta();

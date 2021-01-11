@@ -6,6 +6,7 @@ package clases;
  */
 public class Proveedores
 {
+
     private int id;
     private String rfc;
     private String empresa;
@@ -176,6 +177,5 @@ public class Proveedores
     {
         this.estatus = estatus;
     }
-    
-    
+
 }

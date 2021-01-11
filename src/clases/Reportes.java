@@ -6,6 +6,7 @@ package clases;
  */
 public class Reportes
 {
+
     private int id;
     private int id_Productos;
     private int cantidad_Actual;
@@ -122,6 +123,5 @@ public class Reportes
     {
         this.estatus = estatus;
     }
-    
-    
+
 }
