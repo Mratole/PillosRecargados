@@ -8,14 +8,16 @@ public class Productos
 {
 
     private int id;
+    private String nombre;
     private int cantidad;
     private double precio;
     private double peso;
     private int tipoProducto;
 
-    public Productos(int id, int cantidad, double precio, double peso, int tipoProducto)
+    public Productos(int id, String nombre, int cantidad, double precio, double peso, int tipoProducto)
     {
         this.id = id;
+        this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
         this.peso = peso;
@@ -70,6 +72,22 @@ public class Productos
     public void setTipoProducto(int tipoProducto)
     {
         this.tipoProducto = tipoProducto;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre()
+    {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
     }
 
 }

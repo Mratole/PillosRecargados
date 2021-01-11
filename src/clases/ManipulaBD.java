@@ -76,7 +76,7 @@ public class ManipulaBD
         ArrayList<Productos> lista = new ArrayList<>();
         try
         {
-            for (int i = 0; i < reg.size(); i += 5)
+            for (int i = 0; i < reg.size(); i += 6)
             {
                 String idS = "";
                 idS = (String) reg.get(i);
@@ -84,15 +84,16 @@ public class ManipulaBD
                 if (idS != "" && idS != " " && idS != null)
                 {
                     int id = Integer.parseInt(idS);
-                    String cantidadS = ((String) reg.get(i + 1)).trim();
+                    String nombre = ((String) reg.get(i + 1)).trim();
+                    String cantidadS = ((String) reg.get(i + 2)).trim();
                     int cantidad = Integer.parseInt(cantidadS);
-                    String precioS = ((String) reg.get(i + 2)).trim();
+                    String precioS = ((String) reg.get(i + 3)).trim();
                     double precio = Double.parseDouble(precioS);
-                    String pesoS = ((String) reg.get(i + 3)).trim();
+                    String pesoS = ((String) reg.get(i + 4)).trim();
                     double peso = Double.parseDouble(pesoS);
-                    String tipoProductoS = ((String) reg.get(i + 4)).trim();
+                    String tipoProductoS = ((String) reg.get(i + 5)).trim();
                     int tipoProducto = Integer.parseInt(tipoProductoS);
-                    Productos obj = new Productos(id, cantidad, precio, peso, tipoProducto);
+                    Productos obj = new Productos(id, nombre, cantidad, precio, peso, tipoProducto);
                     lista.add(obj);
                 }
             }
@@ -292,14 +293,15 @@ public class ManipulaBD
         }
     }
 
-    public static void AltasProductos(int id, int cantidad, double precio, double peso, int tipoProducto)
+    public static void AltasProductos(int id, String nombre, int cantidad, double precio, double peso, int tipoProducto)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
             sql.Insertar(con, "productos",
-                    "" + id + ","
+                    "" + id + ",'"
+                    + nombre + "',"
                     + cantidad + ","
                     + precio + ","
                     + peso + ","
