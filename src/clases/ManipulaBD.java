@@ -443,7 +443,7 @@ public class ManipulaBD
         }
         ManipulaBD.desconecta(con);
     }
-    public static void BajasReportess(int id)
+    public static void BajasReportes(int id)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
@@ -470,6 +470,106 @@ public class ManipulaBD
         {
             Querys sql = new Querys();
             ap = ManipulaBD.CargarProveedores(sql.Seleccion(con, "*", "proveedores", variable + condicion));
+            if (ap != null)
+            {
+                System.out.println("Encontrado(s)");
+            } else
+            {
+                System.out.println("No se encontro ni maiz");
+            }
+        }
+        ManipulaBD.desconecta(con);
+        return ap;
+    }
+    
+    public static ArrayList<Productos> ConsultaProductos(String variable, String condicion)
+    {
+        Connection con = ManipulaBD.conecta();
+        ArrayList<Productos> ap = null;
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ap = ManipulaBD.CargarProductos(sql.Seleccion(con, "*", "productos", variable + condicion));
+            if (ap != null)
+            {
+                System.out.println("Encontrado(s)");
+            } else
+            {
+                System.out.println("No se encontro ni maiz");
+            }
+        }
+        ManipulaBD.desconecta(con);
+        return ap;
+    }
+    
+    public static ArrayList<Compras> ConsultaCompras(String variable, String condicion)
+    {
+        Connection con = ManipulaBD.conecta();
+        ArrayList<Compras> ap = null;
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ap = ManipulaBD.CargarCompras(sql.Seleccion(con, "*", "compras", variable + condicion));
+            if (ap != null)
+            {
+                System.out.println("Encontrado(s)");
+            } else
+            {
+                System.out.println("No se encontro ni maiz");
+            }
+        }
+        ManipulaBD.desconecta(con);
+        return ap;
+    }
+    
+    public static ArrayList<Detalles> ConsultaDetalles(String variable, String condicion)
+    {
+        Connection con = ManipulaBD.conecta();
+        ArrayList<Detalles> ap = null;
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ap = ManipulaBD.CargarDetalles(sql.Seleccion(con, "*", "detalles", variable + condicion));
+            if (ap != null)
+            {
+                System.out.println("Encontrado(s)");
+            } else
+            {
+                System.out.println("No se encontro ni maiz");
+            }
+        }
+        ManipulaBD.desconecta(con);
+        return ap;
+    }
+    
+    public static ArrayList<Usuarios> ConsultaUsuarios(String variable, String condicion)
+    {
+        Connection con = ManipulaBD.conecta();
+        ArrayList<Usuarios> ap = null;
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ap = ManipulaBD.CargarUsuarios(sql.Seleccion(con, "*", "usuarios", variable + condicion));
+            if (ap != null)
+            {
+                System.out.println("Encontrado(s)");
+            } else
+            {
+                System.out.println("No se encontro ni maiz");
+            }
+        }
+        ManipulaBD.desconecta(con);
+        return ap;
+    }
+    
+    public static ArrayList<Reportes> ConsultaReportes(String variable, String condicion)
+    {
+        Connection con = ManipulaBD.conecta();
+        ArrayList<Reportes> ap = null;
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ap = ManipulaBD.CargarReportes(sql.Seleccion(con, "*", "reportes", variable + condicion));
             if (ap != null)
             {
                 System.out.println("Encontrado(s)");
