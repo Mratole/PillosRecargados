@@ -83,7 +83,7 @@ public class Compras
     /**
      * @return the total
      */
-    public float     isTotal()
+    public float isTotal()
     {
         return total;
     }

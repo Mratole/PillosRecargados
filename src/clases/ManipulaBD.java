@@ -389,13 +389,67 @@ public class ManipulaBD
      *
      * @param id tipo int
      */
-    public static void BajasPersonas(int id)
+    public static void BajasProveedores(int id)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
             sql.Delete(con, "proveedores", "id", "" + id + "");
+        }
+        ManipulaBD.desconecta(con);
+    }
+    
+    public static void BajasProductos(int id)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Delete(con, "productos", "id", "" + id + "");
+        }
+        ManipulaBD.desconecta(con);
+    }
+    
+    public static void BajasCompras(int id)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Delete(con, "compras", "id", "" + id + "");
+        }
+        ManipulaBD.desconecta(con);
+    }
+            
+    public static void BajasDetalles(int id)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Delete(con, "detalles", "id", "" + id + "");
+        }
+        ManipulaBD.desconecta(con);
+    }
+    
+    public static void BajasUsuarios(int id)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Delete(con, "usuarios", "id", "" + id + "");
+        }
+        ManipulaBD.desconecta(con);
+    }
+    public static void BajasReportess(int id)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            sql.Delete(con, "usuarios", "id", "" + id + "");
         }
         ManipulaBD.desconecta(con);
     }
