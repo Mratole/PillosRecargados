@@ -603,5 +603,85 @@ public class ManipulaBD
             }
         }
     }
+    
+    public static void ModificarProductos(int id, String campos, String datos)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ArrayList<Productos> ap = ManipulaBD.CargarProductos(sql.Seleccion(con, "*", "productos", "id=" + id + ""));
+            if (ap != null)
+            {
+                sql.Modificar(con, "productos", campos, datos, "id=" + id + "");
+                ManipulaBD.desconecta(con);
+                System.out.println("Modificado");
+            }
+        }
+    }
+    
+    public static void ModificarCompras(int id, String campos, String datos)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ArrayList<Compras> ap = ManipulaBD.CargarCompras(sql.Seleccion(con, "*", "compras", "id=" + id + ""));
+            if (ap != null)
+            {
+                sql.Modificar(con, "compras", campos, datos, "id=" + id + "");
+                ManipulaBD.desconecta(con);
+                System.out.println("Modificado");
+            }
+        }
+    }
+    
+    public static void ModificarDetalles(int id, String campos, String datos)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ArrayList<Detalles> ap = ManipulaBD.CargarDetalles(sql.Seleccion(con, "*", "detalles", "id=" + id + ""));
+            if (ap != null)
+            {
+                sql.Modificar(con, "detalles", campos, datos, "id=" + id + "");
+                ManipulaBD.desconecta(con);
+                System.out.println("Modificado");
+            }
+        }
+    }
+    
+    public static void ModificarUsuarios(int id, String campos, String datos)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ArrayList<Usuarios> ap = ManipulaBD.CargarUsuarios(sql.Seleccion(con, "*", "usuarios", "id=" + id + ""));
+            if (ap != null)
+            {
+                sql.Modificar(con, "usuarios", campos, datos, "id=" + id + "");
+                ManipulaBD.desconecta(con);
+                System.out.println("Modificado");
+            }
+        }
+    }
+    
+    public static void ModificarReportes(int id, String campos, String datos)
+    {
+        Connection con = ManipulaBD.conecta();
+        if (con != null)
+        {
+            Querys sql = new Querys();
+            ArrayList<Reportes> ap = ManipulaBD.CargarReportes(sql.Seleccion(con, "*", "reportes", "id=" + id + ""));
+            if (ap != null)
+            {
+                sql.Modificar(con, "reportes", campos, datos, "id=" + id + "");
+                ManipulaBD.desconecta(con);
+                System.out.println("Modificado");
+            }
+        }
+    }
 
 }
