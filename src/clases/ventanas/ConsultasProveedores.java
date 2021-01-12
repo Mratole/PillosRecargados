@@ -13,24 +13,29 @@ import java.util.ArrayList;
  *
  * @author roodi
  */
-public class ConsultasProveedores extends javax.swing.JFrame {
+public class ConsultasProveedores extends javax.swing.JFrame
+{
 
     private ArrayList<Proveedores> lista;
 
     /**
      * Creates new form ConsultasProveedores
      */
-    public ConsultasProveedores() {
+    public ConsultasProveedores()
+    {
         initComponents();
         llenarTabla();
     }
 
-    private void llenarTabla() {
+    private void llenarTabla()
+    {
         lista = ManipulaBD.ConsultaProveedores("id!=", "-1");
-        if (lista != null) {    
+        if (lista != null)
+        {
             int tamaño = lista.size();
             Object matriz[][] = new Object[tamaño][9];
-            for (int i = 0; i < lista.size(); i++) {
+            for (int i = 0; i < lista.size(); i++)
+            {
                 matriz[i][0] = lista.get(i).getId();
                 matriz[i][1] = lista.get(i).getRfc();
                 matriz[i][2] = lista.get(i).getEmpresa();
@@ -42,9 +47,21 @@ public class ConsultasProveedores extends javax.swing.JFrame {
                 matriz[i][8] = lista.get(i).isEstatus();
             }
 
-            Tproveedores.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]{
-                "ID", "Rfc","Empresa","Direccion","Sector","TelEmpresa","Contacto","TelContacto","Estatus"
-            }));
+            Tproveedores.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]
+            {
+                "ID", "Rfc", "Empresa", "Direccion", "Sector", "TelEmpresa", "Contacto", "TelContacto", "Estatus"
+            })
+            {
+                Class[] types = new Class[]
+                {
+                    Integer.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, Boolean.class
+                };
+
+                public Class getColumnClass(int columnIndex)
+                {
+                    return types[columnIndex];
+                }
+            });
         }
     }
 
@@ -55,7 +72,8 @@ public class ConsultasProveedores extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tproveedores = new javax.swing.JTable();
@@ -66,32 +84,23 @@ public class ConsultasProveedores extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Tproveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+            new Object [][]
+            {
+
             },
-            new String [] {
+            new String []
+            {
                 "Id", "RFC", "Empresa", "Dirección", "Sector", "Teléfono de la Empresa", "Contacto", "Teléfono de Contacto", "Estatus"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.Boolean.class
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
@@ -100,8 +109,10 @@ public class ConsultasProveedores extends javax.swing.JFrame {
         jLabel1.setText("Proveedores");
 
         cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cancelarActionPerformed(evt);
             }
         });
@@ -148,33 +159,43 @@ public class ConsultasProveedores extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new ConsultasProveedores().setVisible(true);
             }
         });

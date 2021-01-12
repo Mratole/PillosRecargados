@@ -66,7 +66,7 @@
         <Component class="javax.swing.JTable" name="Tproveedores">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="15">
+              <Table columnCount="9" rowCount="0">
                 <Column editable="true" title="Id" type="java.lang.Integer"/>
                 <Column editable="true" title="RFC" type="java.lang.String"/>
                 <Column editable="true" title="Empresa" type="java.lang.String"/>
