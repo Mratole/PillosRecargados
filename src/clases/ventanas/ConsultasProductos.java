@@ -13,38 +13,55 @@ import java.util.ArrayList;
  *
  * @author roodi
  */
-public class ConsultasProductos extends javax.swing.JFrame {
+public class ConsultasProductos extends javax.swing.JFrame
+{
 
     private ArrayList<Productos> lista;
-    
 
     /**
      * Creates new form ConsultasProductos
      */
-    public ConsultasProductos() {
+    public ConsultasProductos()
+    {
         initComponents();
+        llenarTabla();
     }
 
-    private void llenarTabla() {
+    private void llenarTabla()
+    {
         lista = ManipulaBD.ConsultaProductos("id!=", "-1");
-        if (lista != null) {
+        if (lista != null)
+        {
             int tamaño = lista.size();
-            String matriz[][] = new String[tamaño][6];
-            for (int i = 0; i < lista.size(); i++) {
-                matriz[i][0] = lista.get(i).getId() + "";
-                matriz[i][1] = lista.get(i).get();
-                matriz[i][2] = lista.get(i).getCantidad() + "";
-                matriz[i][3] = lista.get(i).getPeso() + "";
-                matriz[i][4] = lista.get(i).getPrecio() + "";
-                matriz[i][5] = lista.get(i).getTipoProducto()+ "";
+            Object matriz[][] = new Object[tamaño][7];
+            for (int i = 0; i < lista.size(); i++)
+            {
+                matriz[i][0] = lista.get(i).getId();
+                matriz[i][1] = lista.get(i).getId_Proveedores();
+                matriz[i][2] = lista.get(i).getNombre();
+                matriz[i][3] = lista.get(i).getCantidad();
+                matriz[i][4] = lista.get(i).getPrecio();
+                matriz[i][5] = lista.get(i).getPeso();
+                matriz[i][6] = lista.get(i).getTipoProducto();
             }
 
-            Tproductos.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]{
-                "Id", "id_proveedor","Cantidad","Peso","Precio","TipoProducto","Nombre"
+            Tproductos.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]
+            {
+                "Id", "Proveedor", "Nombre", "Cantidad", "Precio", "Peso", "TipoProducto"
+            })
+            {
+                Class[] types = new Class[]
+                {
+                    Integer.class, Integer.class, String.class, Integer.class, Double.class, Double.class, Integer.class
+                };
+
+                public Class getColumnClass(int columnIndex)
+                {
+                    return types[columnIndex];
+                }
             }
-                    
-            ));
-            
+            );
+
         }
     }
 
@@ -138,33 +155,43 @@ public class ConsultasProductos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(ConsultasProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new ConsultasProductos().setVisible(true);
             }
         });
