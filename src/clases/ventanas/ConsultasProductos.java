@@ -7,6 +7,7 @@ package clases.ventanas;
 
 import clases.ManipulaBD;
 import clases.Productos;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class ConsultasProductos extends javax.swing.JFrame
 {
 
+    private int indice;
     private ArrayList<Productos> lista;
 
     /**
@@ -59,6 +61,19 @@ public class ConsultasProductos extends javax.swing.JFrame
                 {
                     return types[columnIndex];
                 }
+
+                @Override
+                public boolean isCellEditable(int row, int column)
+                {
+                    if (column != 0)
+                    {
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }
+
             }
             );
 
@@ -72,64 +87,85 @@ public class ConsultasProductos extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tproductos = new javax.swing.JTable();
         cancelar = new javax.swing.JButton();
-        aceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBajas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Tproductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
-                "Id", "Id Proveedor", "Cantidad", "Peso", "Precio", "Tipo de producto", "Nombre"
+            new String []
+            {
+                "Id", "Proveedor", "Nombre", "Cantidad", "Precio", "Peso", "Tipo de producto"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Object.class
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
         Tproductos.setColumnSelectionAllowed(true);
+        Tproductos.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyReleased(java.awt.event.KeyEvent evt)
+            {
+                TproductosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tproductos);
 
         cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cancelar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cancelarActionPerformed(evt);
             }
         });
 
-        aceptar.setText("Aceptar");
-
         jLabel1.setText("Productos");
+
+        btnBajas.setText("Bajas");
+        btnBajas.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnBajasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(cancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(aceptar)
-                .addGap(100, 100, 100))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(335, 335, 335))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBajas))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,11 +174,11 @@ public class ConsultasProductos extends javax.swing.JFrame
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
-                    .addComponent(aceptar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(btnBajas))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -151,6 +187,37 @@ public class ConsultasProductos extends javax.swing.JFrame
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void TproductosKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_TproductosKeyReleased
+    {//GEN-HEADEREND:event_TproductosKeyReleased
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            indice = Tproductos.getSelectedRow();
+            int id = lista.get(indice).getId();
+            int id_po = (int) Tproductos.getValueAt(indice, 1);
+            String nom = (String) Tproductos.getValueAt(indice, 2);
+            int canti = (int) Tproductos.getValueAt(indice, 3);
+            double pre = (double) Tproductos.getValueAt(indice, 4);
+            double pes = (double) Tproductos.getValueAt(indice, 5);
+            int tipo = (int) Tproductos.getValueAt(indice, 6);
+
+            ManipulaBD.ModificarProductos(id, "id_proveedores", "" + id_po + "");
+            ManipulaBD.ModificarProductos(id, "nombre", "'" + nom + "'");
+            ManipulaBD.ModificarProductos(id, "cantidad", "" + canti + "");
+            ManipulaBD.ModificarProductos(id, "precio", "" + pre + "");
+            ManipulaBD.ModificarProductos(id, "peso", "" + pes + "");
+            ManipulaBD.ModificarProductos(id, "tipoProducto", "" + tipo + "");
+            llenarTabla();
+
+        }
+
+    }//GEN-LAST:event_TproductosKeyReleased
+
+    private void btnBajasActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBajasActionPerformed
+    {//GEN-HEADEREND:event_btnBajasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBajasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +266,7 @@ public class ConsultasProductos extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tproductos;
-    private javax.swing.JButton aceptar;
+    private javax.swing.JButton btnBajas;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
