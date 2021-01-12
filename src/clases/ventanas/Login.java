@@ -5,16 +5,25 @@
  */
 package clases.ventanas;
 
+import clases.ManipulaBD;
+import clases.Usuarios;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author roodi
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame
+{
+
+    private static ArrayList<Usuarios> usu = null;
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login()
+    {
         initComponents();
     }
 
@@ -25,7 +34,8 @@ public class Login extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         aceptar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
@@ -38,10 +48,19 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                aceptarActionPerformed(evt);
+            }
+        });
 
         salir.setText("Salir");
-        salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        salir.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 salirActionPerformed(evt);
             }
         });
@@ -102,36 +121,77 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_salirActionPerformed
 
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_aceptarActionPerformed
+    {//GEN-HEADEREND:event_aceptarActionPerformed
+
+        String variable = "nomUsuario=";
+        usu = ManipulaBD.ConsultaUsuarios(variable, "'" + usuario.getText() + "'");
+        if (usu != null)
+        {
+            if (usu.get(0).getContrasenia().compareTo(contrasenia.getText()) == 0)
+            {
+                switch (usu.get(0).getPuesto())
+                {
+                    case "Admin":
+                        new Admin().setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    case "Empleado":
+                        new Empleado().setVisible(true);
+                        this.setVisible(false);
+                        break;
+                }
+            } else
+            {
+                JOptionPane.showMessageDialog(null, "Usuario no existente");
+            }
+        } else
+        {
+            JOptionPane.showMessageDialog(null, "Usuario no existente");
+        }
+
+    }//GEN-LAST:event_aceptarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new Login().setVisible(true);
             }
         });
@@ -146,4 +206,20 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton salir;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the usu
+     */
+    public static ArrayList<Usuarios> getUsu()
+    {
+        return usu;
+    }
+
+    /**
+     * @param aUsu the usu to set
+     */
+    public static void setUsu(ArrayList<Usuarios> aUsu)
+    {
+        usu = aUsu;
+    }
 }
