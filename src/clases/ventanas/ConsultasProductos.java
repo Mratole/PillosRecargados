@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ConsultasProductos extends javax.swing.JFrame
 {
-
+    
     private int indice;
     private ArrayList<Productos> lista;
 
@@ -28,14 +28,14 @@ public class ConsultasProductos extends javax.swing.JFrame
         initComponents();
         llenarTabla();
     }
-
+    
     private void llenarTabla()
     {
         lista = ManipulaBD.ConsultaProductos("id!=", "-1");
         if (lista != null)
         {
             int tamaño = lista.size();
-            Object matriz[][] = new Object[tamaño][7];
+            Object matriz[][] = new Object[tamaño][8];
             for (int i = 0; i < lista.size(); i++)
             {
                 matriz[i][0] = lista.get(i).getId();
@@ -45,23 +45,24 @@ public class ConsultasProductos extends javax.swing.JFrame
                 matriz[i][4] = lista.get(i).getPrecio();
                 matriz[i][5] = lista.get(i).getPeso();
                 matriz[i][6] = lista.get(i).getTipoProducto();
+                matriz[i][7] = lista.get(i).isEstatus();
             }
-
+            
             Tproductos.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]
             {
-                "Id", "Proveedor", "Nombre", "Cantidad", "Precio", "Peso", "TipoProducto"
+                "Id", "Proveedor", "Nombre", "Cantidad", "Precio", "Peso", "TipoProducto", "Estatus"
             })
             {
                 Class[] types = new Class[]
                 {
-                    Integer.class, Integer.class, String.class, Integer.class, Double.class, Double.class, Integer.class
+                    Integer.class, Integer.class, String.class, Integer.class, Double.class, Double.class, Integer.class, Boolean.class
                 };
-
+                
                 public Class getColumnClass(int columnIndex)
                 {
                     return types[columnIndex];
                 }
-
+                
                 @Override
                 public boolean isCellEditable(int row, int column)
                 {
@@ -73,10 +74,10 @@ public class ConsultasProductos extends javax.swing.JFrame
                         return false;
                     }
                 }
-
+                
             }
             );
-
+            
         }
     }
 
@@ -105,13 +106,13 @@ public class ConsultasProductos extends javax.swing.JFrame
             },
             new String []
             {
-                "Id", "Proveedor", "Nombre", "Cantidad", "Precio", "Peso", "Tipo de producto"
+                "Id", "Proveedor", "Nombre", "Cantidad", "Precio", "Peso", "Tipo de producto", "Estatus"
             }
         )
         {
             Class[] types = new Class []
             {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Boolean.class
             };
 
             public Class getColumnClass(int columnIndex)
@@ -190,33 +191,37 @@ public class ConsultasProductos extends javax.swing.JFrame
 
     private void TproductosKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_TproductosKeyReleased
     {//GEN-HEADEREND:event_TproductosKeyReleased
-
+        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             indice = Tproductos.getSelectedRow();
             int id = lista.get(indice).getId();
+            System.out.println("id===" + id);
             int id_po = (int) Tproductos.getValueAt(indice, 1);
             String nom = (String) Tproductos.getValueAt(indice, 2);
             int canti = (int) Tproductos.getValueAt(indice, 3);
             double pre = (double) Tproductos.getValueAt(indice, 4);
             double pes = (double) Tproductos.getValueAt(indice, 5);
             int tipo = (int) Tproductos.getValueAt(indice, 6);
-
+            
             ManipulaBD.ModificarProductos(id, "id_proveedores", "" + id_po + "");
             ManipulaBD.ModificarProductos(id, "nombre", "'" + nom + "'");
             ManipulaBD.ModificarProductos(id, "cantidad", "" + canti + "");
             ManipulaBD.ModificarProductos(id, "precio", "" + pre + "");
             ManipulaBD.ModificarProductos(id, "peso", "" + pes + "");
             ManipulaBD.ModificarProductos(id, "tipoProducto", "" + tipo + "");
-            llenarTabla();
-
         }
 
     }//GEN-LAST:event_TproductosKeyReleased
 
     private void btnBajasActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBajasActionPerformed
     {//GEN-HEADEREND:event_btnBajasActionPerformed
-        // TODO add your handling code here:
+        for (int i = 0; i < lista.size(); i++)
+        {
+            boolean est = (boolean) Tproductos.getValueAt(i, 7);
+            String esta = String.valueOf(est);
+            ManipulaBD.ModificarProductos(lista.get(i).getId(), "estatus", "'" + esta + "'");
+        }
     }//GEN-LAST:event_btnBajasActionPerformed
 
     /**
