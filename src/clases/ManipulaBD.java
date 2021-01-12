@@ -76,7 +76,7 @@ public class ManipulaBD
         ArrayList<Productos> lista = new ArrayList<>();
         try
         {
-            for (int i = 0; i < reg.size(); i += 7)
+            for (int i = 0; i < reg.size(); i += 8)
             {
                 String idS = "";
                 idS = (String) reg.get(i);
@@ -95,7 +95,9 @@ public class ManipulaBD
                     double peso = Double.parseDouble(pesoS);
                     String tipoProductoS = ((String) reg.get(i + 6)).trim();
                     int tipoProducto = Integer.parseInt(tipoProductoS);
-                    Productos obj = new Productos(id, id_Proveedor, nombre, cantidad, precio, peso, tipoProducto);
+                    String estatusS = ((String) reg.get(i + 7)).trim();
+                    boolean estatus = Boolean.parseBoolean(estatusS);
+                    Productos obj = new Productos(id, id_Proveedor, nombre, cantidad, precio, peso, tipoProducto, estatus);
                     lista.add(obj);
                 }
             }
@@ -296,8 +298,9 @@ public class ManipulaBD
     }
 
     public static void AltasProductos(int id, int id_Proveedores, String nombre,
-            int cantidad, double precio, double peso, int tipoProducto)
+            int cantidad, double precio, double peso, int tipoProducto, boolean estatus)
     {
+        String estatusS = String.valueOf(estatus);
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
@@ -309,7 +312,8 @@ public class ManipulaBD
                     + cantidad + ","
                     + precio + ","
                     + peso + ","
-                    + tipoProducto + ""
+                    + tipoProducto + ","
+                    + estatus + ""
             );
             ManipulaBD.desconecta(con);
             System.out.println("Dato insertado");

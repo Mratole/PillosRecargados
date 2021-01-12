@@ -309,7 +309,7 @@ public class AltasProductos extends javax.swing.JFrame
         }
         int id_Provedor = Integer.parseInt((String) ListaPr.getSelectedItem());
 
-        ManipulaBD.AltasProductos(id, id_Provedor, nom, cantidad, pre, peso, tipo);
+        ManipulaBD.AltasProductos(id, id_Provedor, nom, cantidad, pre, peso, tipo, true);
         llenarTabla();
 
 

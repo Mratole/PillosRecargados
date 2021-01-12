@@ -14,8 +14,9 @@ public class Productos
     private double precio;
     private double peso;
     private int tipoProducto;
+    private boolean estatus;
 
-    public Productos(int id, int id_Proveedores, String nombre, int cantidad, double precio, double peso, int tipoProducto)
+    public Productos(int id, int id_Proveedores, String nombre, int cantidad, double precio, double peso, int tipoProducto, boolean estatus)
     {
         this.id = id;
         this.id_Proveedores = id_Proveedores;
@@ -24,9 +25,8 @@ public class Productos
         this.precio = precio;
         this.peso = peso;
         this.tipoProducto = tipoProducto;
+        this.estatus = estatus;
     }
-
-    
 
     public int getId()
     {
@@ -108,6 +108,22 @@ public class Productos
     public void setId_Proveedores(int id_Proveedores)
     {
         this.id_Proveedores = id_Proveedores;
+    }
+
+    /**
+     * @return the estatus
+     */
+    public boolean isEstatus()
+    {
+        return estatus;
+    }
+
+    /**
+     * @param estatus the estatus to set
+     */
+    public void setEstatus(boolean estatus)
+    {
+        this.estatus = estatus;
     }
 
 }
