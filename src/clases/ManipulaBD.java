@@ -84,6 +84,8 @@ public class ManipulaBD
                 if (idS != "" && idS != " " && idS != null)
                 {
                     int id = Integer.parseInt(idS);
+                    String id_proveedorS = ((String) reg.get(i + 1)).trim();
+                    int id_Proveedor = Integer.parseInt(id_proveedorS);
                     String nombre = ((String) reg.get(i + 1)).trim();
                     String cantidadS = ((String) reg.get(i + 2)).trim();
                     int cantidad = Integer.parseInt(cantidadS);
@@ -93,7 +95,7 @@ public class ManipulaBD
                     double peso = Double.parseDouble(pesoS);
                     String tipoProductoS = ((String) reg.get(i + 5)).trim();
                     int tipoProducto = Integer.parseInt(tipoProductoS);
-                    Productos obj = new Productos(id, nombre, cantidad, precio, peso, tipoProducto);
+                    Productos obj = new Productos(id, id_Proveedor, nombre, cantidad, precio, peso, tipoProducto);
                     lista.add(obj);
                 }
             }
@@ -293,14 +295,16 @@ public class ManipulaBD
         }
     }
 
-    public static void AltasProductos(int id, String nombre, int cantidad, double precio, double peso, int tipoProducto)
+    public static void AltasProductos(int id, int id_Proveedores, String nombre,
+            int cantidad, double precio, double peso, int tipoProducto)
     {
         Connection con = ManipulaBD.conecta();
         if (con != null)
         {
             Querys sql = new Querys();
             sql.Insertar(con, "productos",
-                    "" + id + ",'"
+                    "" + id + ","
+                    + id_Proveedores + ",'"
                     + nombre + "',"
                     + cantidad + ","
                     + precio + ","
