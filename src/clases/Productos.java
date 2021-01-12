@@ -8,21 +8,25 @@ public class Productos
 {
 
     private int id;
+    private int id_Proveedores;
     private String nombre;
     private int cantidad;
     private double precio;
     private double peso;
     private int tipoProducto;
 
-    public Productos(int id, String nombre, int cantidad, double precio, double peso, int tipoProducto)
+    public Productos(int id, int id_Proveedores, String nombre, int cantidad, double precio, double peso, int tipoProducto)
     {
         this.id = id;
+        this.id_Proveedores = id_Proveedores;
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
         this.peso = peso;
         this.tipoProducto = tipoProducto;
     }
+
+    
 
     public int getId()
     {
@@ -88,6 +92,22 @@ public class Productos
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
+    }
+
+    /**
+     * @return the id_Proveedores
+     */
+    public int getId_Proveedores()
+    {
+        return id_Proveedores;
+    }
+
+    /**
+     * @param id_Proveedores the id_Proveedores to set
+     */
+    public void setId_Proveedores(int id_Proveedores)
+    {
+        this.id_Proveedores = id_Proveedores;
     }
 
 }
