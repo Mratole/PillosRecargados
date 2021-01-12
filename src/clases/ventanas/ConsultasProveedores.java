@@ -5,17 +5,47 @@
  */
 package clases.ventanas;
 
+import clases.ManipulaBD;
+import clases.Proveedores;
+import java.util.ArrayList;
+
 /**
  *
  * @author roodi
  */
 public class ConsultasProveedores extends javax.swing.JFrame {
 
+    private ArrayList<Proveedores> lista;
+
     /**
      * Creates new form ConsultasProveedores
      */
     public ConsultasProveedores() {
         initComponents();
+        llenarTabla();
+    }
+
+    private void llenarTabla() {
+        lista = ManipulaBD.ConsultaProveedores("id!=", "-1");
+        if (lista != null) {    
+            int tamaño = lista.size();
+            Object matriz[][] = new Object[tamaño][9];
+            for (int i = 0; i < lista.size(); i++) {
+                matriz[i][0] = lista.get(i).getId();
+                matriz[i][1] = lista.get(i).getRfc();
+                matriz[i][2] = lista.get(i).getEmpresa();
+                matriz[i][3] = lista.get(i).getDireccion();
+                matriz[i][4] = lista.get(i).getSector();
+                matriz[i][5] = lista.get(i).getTelEmpresa();
+                matriz[i][6] = lista.get(i).getContacto();
+                matriz[i][7] = lista.get(i).getTelContacto();
+                matriz[i][8] = lista.get(i).isEstatus();
+            }
+
+            Tproveedores.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]{
+                "ID", "Rfc","Empresa","Direccion","Sector","TelEmpresa","Contacto","TelContacto","Estatus"
+            }));
+        }
     }
 
     /**
