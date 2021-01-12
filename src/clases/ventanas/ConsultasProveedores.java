@@ -127,6 +127,11 @@ public class ConsultasProveedores extends javax.swing.JFrame
         });
 
         bajas.setText("Bajas");
+        bajas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bajasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,6 +195,15 @@ public class ConsultasProveedores extends javax.swing.JFrame
 
         }
     }//GEN-LAST:event_TproveedoresKeyReleased
+
+    private void bajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bajasActionPerformed
+        for (int i = 0; i < lista.size(); i++)
+        {
+            boolean est = (boolean) Tproveedores.getValueAt(i, 8);
+            String esta = String.valueOf(est);
+            ManipulaBD.ModificarProveedores(lista.get(i).getId(), "estatus", "'" + esta + "'");
+        }
+    }//GEN-LAST:event_bajasActionPerformed
 
     /**
      * @param args the command line arguments
