@@ -278,7 +278,17 @@ public class AltasProveedor extends javax.swing.JFrame
     }//GEN-LAST:event_telEmpresa_iActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        // TODO add your handling code here:
+        switch (Login.getUsu().get(0).getPuesto())
+        {
+            case "Admin":
+                new Admin().setVisible(true);
+                this.setVisible(false);
+                break;
+            case "Empleado":
+                new Empleado().setVisible(true);
+                this.setVisible(false);
+                break;
+        }
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed

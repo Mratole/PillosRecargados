@@ -130,7 +130,17 @@ public class Login extends javax.swing.JFrame
         {
             if (usu.get(0).getContrasenia().compareTo(contrasenia.getText()) == 0)
             {
-                
+                switch (usu.get(0).getPuesto())
+                {
+                    case "Admin":
+                        new Admin().setVisible(true);
+                        this.setVisible(false);
+                        break;
+                    case "Empleado":
+                        new Empleado().setVisible(true);
+                        this.setVisible(false);
+                        break;
+                }
             } else
             {
                 JOptionPane.showMessageDialog(null, "Usuario no existente");

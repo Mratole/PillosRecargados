@@ -186,7 +186,17 @@ public class ConsultasProductos extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        // TODO add your handling code here:
+        switch (Login.getUsu().get(0).getPuesto())
+        {
+            case "Admin":
+                new Admin().setVisible(true);
+                this.setVisible(false);
+                break;
+            case "Empleado":
+                new Empleado().setVisible(true);
+                this.setVisible(false);
+                break;
+        }
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void TproductosKeyReleased(java.awt.event.KeyEvent evt)//GEN-FIRST:event_TproductosKeyReleased
