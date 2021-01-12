@@ -7,6 +7,7 @@ package clases.ventanas;
 
 import clases.ManipulaBD;
 import clases.Proveedores;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ConsultasProveedores extends javax.swing.JFrame
 {
-
+    private int indice;
     private ArrayList<Proveedores> lista;
 
     /**
@@ -61,6 +62,17 @@ public class ConsultasProveedores extends javax.swing.JFrame
                 {
                     return types[columnIndex];
                 }
+                
+                public boolean isCellEditable(int row, int column)
+                {
+                    if (column != 0)
+                    {
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }
             });
         }
     }
@@ -72,36 +84,35 @@ public class ConsultasProveedores extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tproveedores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         cancelar = new javax.swing.JButton();
-        aceptar = new javax.swing.JButton();
+        bajas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Tproveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
 
             },
-            new String []
-            {
+            new String [] {
                 "Id", "RFC", "Empresa", "Dirección", "Sector", "Teléfono de la Empresa", "Contacto", "Teléfono de Contacto", "Estatus"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.Boolean.class
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        Tproveedores.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TproveedoresKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(Tproveedores);
@@ -109,15 +120,13 @@ public class ConsultasProveedores extends javax.swing.JFrame
         jLabel1.setText("Proveedores");
 
         cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
 
-        aceptar.setText("Aceptar");
+        bajas.setText("Bajas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,7 +141,7 @@ public class ConsultasProveedores extends javax.swing.JFrame
                 .addGap(221, 221, 221)
                 .addComponent(cancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(aceptar)
+                .addComponent(bajas)
                 .addGap(221, 221, 221))
         );
         layout.setVerticalGroup(
@@ -145,7 +154,7 @@ public class ConsultasProveedores extends javax.swing.JFrame
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
-                    .addComponent(aceptar))
+                    .addComponent(bajas))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -155,6 +164,32 @@ public class ConsultasProveedores extends javax.swing.JFrame
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void TproveedoresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TproveedoresKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            indice = Tproveedores.getSelectedRow();
+            int id = lista.get(indice).getId();
+            String rfc = (String) Tproveedores.getValueAt(indice, 1);
+            String empresa = (String) Tproveedores.getValueAt(indice, 2);
+            String direccion = (String) Tproveedores.getValueAt(indice, 3);
+            String sector = (String) Tproveedores.getValueAt(indice, 4);
+            String telEmpresa = (String) Tproveedores.getValueAt(indice, 5);
+            String contacto = (String) Tproveedores.getValueAt(indice, 6);
+            String telContacto = (String) Tproveedores.getValueAt(indice, 7);
+
+            ManipulaBD.ModificarProveedores(id, "rfc", "'" + rfc + "'");
+            ManipulaBD.ModificarProveedores(id, "empresa", "'" + empresa + "'");
+            ManipulaBD.ModificarProveedores(id, "direccion", "'" + direccion + "'");
+            ManipulaBD.ModificarProveedores(id, "sector", "'" + sector + "'");
+            ManipulaBD.ModificarProveedores(id, "telEmpresa", "'" + telEmpresa + "'");
+            ManipulaBD.ModificarProveedores(id, "contacto", "'" + contacto + "'");
+            ManipulaBD.ModificarProveedores(id, "telContacto", "'" + telContacto + "'");
+
+            llenarTabla();
+
+        }
+    }//GEN-LAST:event_TproveedoresKeyReleased
 
     /**
      * @param args the command line arguments
@@ -203,7 +238,7 @@ public class ConsultasProveedores extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tproveedores;
-    private javax.swing.JButton aceptar;
+    private javax.swing.JButton bajas;
     private javax.swing.JButton cancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

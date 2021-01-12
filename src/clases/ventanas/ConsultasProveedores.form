@@ -33,7 +33,7 @@
               <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
               <Component id="cancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="aceptar" min="-2" max="-2" attributes="0"/>
+              <Component id="bajas" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -48,7 +48,7 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bajas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
@@ -79,6 +79,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TproveedoresKeyReleased"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -95,9 +98,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="aceptar">
+    <Component class="javax.swing.JButton" name="bajas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Aceptar"/>
+        <Property name="text" type="java.lang.String" value="Bajas"/>
       </Properties>
     </Component>
   </SubComponents>
