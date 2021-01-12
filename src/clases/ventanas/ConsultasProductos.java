@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class ConsultasProductos extends javax.swing.JFrame {
 
     private ArrayList<Productos> lista;
+    
 
     /**
      * Creates new form ConsultasProductos
@@ -39,8 +40,11 @@ public class ConsultasProductos extends javax.swing.JFrame {
             }
 
             Tproductos.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]{
-                "ID", "Nombre"
-            }));
+                "Id", "id_proveedor","Cantidad","Peso","Precio","TipoProducto","Nombre"
+            }
+                    
+            ));
+            
         }
     }
 
@@ -66,11 +70,11 @@ public class ConsultasProductos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Id Proveedor", "Cantidad", "Peso", "Precio", "Tipo de producto"
+                "Id", "Id Proveedor", "Cantidad", "Peso", "Precio", "Tipo de producto", "Nombre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
