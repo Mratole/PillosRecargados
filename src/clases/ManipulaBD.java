@@ -76,7 +76,7 @@ public class ManipulaBD
         ArrayList<Productos> lista = new ArrayList<>();
         try
         {
-            for (int i = 0; i < reg.size(); i += 6)
+            for (int i = 0; i < reg.size(); i += 7)
             {
                 String idS = "";
                 idS = (String) reg.get(i);
@@ -86,14 +86,14 @@ public class ManipulaBD
                     int id = Integer.parseInt(idS);
                     String id_proveedorS = ((String) reg.get(i + 1)).trim();
                     int id_Proveedor = Integer.parseInt(id_proveedorS);
-                    String nombre = ((String) reg.get(i + 1)).trim();
-                    String cantidadS = ((String) reg.get(i + 2)).trim();
+                    String nombre = ((String) reg.get(i + 2)).trim();
+                    String cantidadS = ((String) reg.get(i + 3)).trim();
                     int cantidad = Integer.parseInt(cantidadS);
-                    String precioS = ((String) reg.get(i + 3)).trim();
+                    String precioS = ((String) reg.get(i + 4)).trim();
                     double precio = Double.parseDouble(precioS);
-                    String pesoS = ((String) reg.get(i + 4)).trim();
+                    String pesoS = ((String) reg.get(i + 5)).trim();
                     double peso = Double.parseDouble(pesoS);
-                    String tipoProductoS = ((String) reg.get(i + 5)).trim();
+                    String tipoProductoS = ((String) reg.get(i + 6)).trim();
                     int tipoProducto = Integer.parseInt(tipoProductoS);
                     Productos obj = new Productos(id, id_Proveedor, nombre, cantidad, precio, peso, tipoProducto);
                     lista.add(obj);
