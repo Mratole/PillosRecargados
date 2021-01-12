@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author roodi
+ * @author roodi    
  */
 public class AltasUsuarios extends javax.swing.JFrame {
 
@@ -22,6 +22,7 @@ public class AltasUsuarios extends javax.swing.JFrame {
      */
     public AltasUsuarios() {
         initComponents();
+        lista = ManipulaBD.ConsultaUsuarios("id!=", "-1");
 
     }
 
@@ -64,6 +65,11 @@ public class AltasUsuarios extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,6 +147,11 @@ public class AltasUsuarios extends javax.swing.JFrame {
         new Admin().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new Admin().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

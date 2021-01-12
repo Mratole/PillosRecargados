@@ -5,19 +5,62 @@
  */
 package clases.ventanas;
 
+import clases.ManipulaBD;
+import clases.Productos;
+import clases.Compras;
+import java.util.ArrayList;
+
 /**
  *
  * @author roodi
  */
 public class Detalles extends javax.swing.JFrame {
-
+    private ArrayList<Compras> lista;
+    private ArrayList<Detalles> listaa;
     /**
      * Creates new form Detalles
      */
     public Detalles() {
+        
         initComponents();
-    }
+        llenarTabla();
+//        if (((String) jComboBox1.getSelectedItem()).compareTo("") == 0) {
+//            puesto = "Admin";
+//        } else {
+//            puesto = "Empleado";
+//      
+//     }
+    lista = ManipulaBD.ConsultaCompras("id!=", "-1");
+    if (listaa != null)
+        {
+            for (int i = 0; i < lista.size(); i++)
+            {
+                jComboBox1.addItem(lista.get(i).getId() + "");
+            }
+        }
 
+    }
+    
+    private void llenarTabla()
+    {
+        
+        if (lista != null)
+        {
+            int tamaño = lista.size();
+            String matriz[][] = new String[tamaño][2];
+            for (int i = 0; i < lista.size(); i++)
+            {
+                matriz[i][0] = lista.get(i).getId() + "";
+            
+            }
+
+            Tdetalles.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]
+            {
+                "ID", "Nombre"
+            }));
+        }
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,6 +74,7 @@ public class Detalles extends javax.swing.JFrame {
         Tdetalles = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,29 +124,30 @@ public class Detalles extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
-                        .addComponent(jLabel1)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(159, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(aceptar)
-                .addGap(230, 230, 230))
+                .addGap(293, 293, 293))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(aceptar)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -160,6 +205,7 @@ public class Detalles extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tdetalles;
     private javax.swing.JButton aceptar;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
