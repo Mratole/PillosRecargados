@@ -6,6 +6,7 @@
 package clases.ventanas;
 
 import clases.ManipulaBD;
+import clases.Usuarios;
 import java.util.ArrayList;
 
 /**

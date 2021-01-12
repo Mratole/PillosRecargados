@@ -5,17 +5,70 @@
  */
 package clases.ventanas;
 
+import clases.ManipulaBD;
+import clases.Usuarios;
+import java.util.ArrayList;
+
 /**
  *
  * @author roodi
  */
 public class MenuUsuarios extends javax.swing.JFrame {
-
+    private ArrayList<Usuarios> lista;
     /**
      * Creates new form Usuarios
      */
     public MenuUsuarios() {
         initComponents();
+        llenarTabla();
+    }
+    
+    private void llenarTabla()
+    {
+        lista = ManipulaBD.ConsultaUsuarios("id!=", "-1");
+        if (lista != null)
+        {
+            int tamaño = lista.size();
+            Object matriz[][] = new Object[tamaño][4];
+            for (int i = 0; i < lista.size(); i++)
+            {
+                matriz[i][0] = lista.get(i).getId();
+                matriz[i][1] = lista.get(i).getNomUsuario();
+                matriz[i][2] = lista.get(i).getContrasenia();
+                matriz[i][3] = lista.get(i).getPuesto();
+            }
+            
+            Tusuarios.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]
+            {
+                "id", "nomUsuarios", "contrasenia", "puesto"
+            })
+            {
+                Class[] types = new Class[]
+                {
+                    Integer.class, String.class, String.class,String.class
+                };
+                
+                public Class getColumnClass(int columnIndex)
+                {
+                    return types[columnIndex];
+                }
+                
+                @Override
+                public boolean isCellEditable(int row, int column)
+                {
+                    if (column != 0)
+                    {
+                        return true;
+                    } else
+                    {
+                        return false;
+                    }
+                }
+                
+            }
+            );
+            
+        }
     }
 
     /**
@@ -25,8 +78,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tusuarios = new javax.swing.JTable();
@@ -36,8 +88,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Tusuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,19 +105,15 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Id", "Nombre de usuario", "Contraseña", "Puesto"
             }
-        )
-        {
-            Class[] types = new Class []
-            {
+        ) {
+            Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
-            public Class getColumnClass(int columnIndex)
-            {
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
@@ -75,6 +122,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
         jLabel1.setText("Usuarios");
 
         jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +159,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Admin().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
