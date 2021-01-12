@@ -5,17 +5,43 @@
  */
 package clases.ventanas;
 
+import clases.ManipulaBD;
+import clases.Productos;
+import java.util.ArrayList;
+
 /**
  *
  * @author roodi
  */
 public class ConsultasProductos extends javax.swing.JFrame {
 
+    private ArrayList<Productos> lista;
+
     /**
      * Creates new form ConsultasProductos
      */
     public ConsultasProductos() {
         initComponents();
+    }
+
+    private void llenarTabla() {
+        lista = ManipulaBD.ConsultaProductos("id!=", "-1");
+        if (lista != null) {
+            int tamaño = lista.size();
+            String matriz[][] = new String[tamaño][6];
+            for (int i = 0; i < lista.size(); i++) {
+                matriz[i][0] = lista.get(i).getId() + "";
+                matriz[i][1] = lista.get(i).get();
+                matriz[i][2] = lista.get(i).getCantidad() + "";
+                matriz[i][3] = lista.get(i).getPeso() + "";
+                matriz[i][4] = lista.get(i).getPrecio() + "";
+                matriz[i][5] = lista.get(i).getTipoProducto()+ "";
+            }
+
+            Tproductos.setModel(new javax.swing.table.DefaultTableModel(matriz, new String[]{
+                "ID", "Nombre"
+            }));
+        }
     }
 
     /**
@@ -37,21 +63,7 @@ public class ConsultasProductos extends javax.swing.JFrame {
 
         Tproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id", "Id Proveedor", "Cantidad", "Peso", "Precio", "Tipo de producto"
